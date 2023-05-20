@@ -25,3 +25,12 @@ func showIntegerSquareRoot(_ number: Int) throws -> Int {
 
 try showIntegerSquareRoot(2500)
 
+
+
+/// Checkpoint5
+
+let luckyNumbers = [7, 4, 38, 21, 16, 15, 12, 33, 31, 49]
+
+let result = luckyNumbers.filter { !$0.isMultiple(of: 2)}.sorted().map {
+	print("\($0) is a lucky number")
+}
