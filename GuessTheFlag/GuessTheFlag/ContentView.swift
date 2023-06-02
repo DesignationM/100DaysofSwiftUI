@@ -10,9 +10,13 @@ import SwiftUI
 struct ContentView: View {
 	@State private var showingScore = false
 	@State private var scoreTitle = ""
+	@State private var score = 0
 	
 	@State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
 	@State private var correctAnswer = Int.random(in: 0...2)
+	@State private var attempts = 0
+	@State private var isShowingSummary = false
+	
 	var body: some View {
 		ZStack {
 //			LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
@@ -43,6 +47,7 @@ struct ContentView: View {
 					ForEach(0..<3) { number in
 						Button {
 							// flag was tapped
+							attempts += 1
 							flagTapped(number)
 						} label: {
 							Image(countries[number])
@@ -54,7 +59,7 @@ struct ContentView: View {
 				}
 				Spacer()
 				Spacer()
-				Text("Score: ???")
+				Text("Score: \(score)")
 					.foregroundColor(.white)
 					.font(.title.bold())
 				Spacer()
@@ -64,22 +69,37 @@ struct ContentView: View {
 		.alert(scoreTitle, isPresented: $showingScore) {
 			Button("Contine", action: askQuestion)
 		} message: {
-			Text("Your score is ???")
+			Text("Your score is \(score)")
+		}
+		.alert("Final Score", isPresented: $isShowingSummary) {
+			Button("Restart", action: resetGame)
+		} message: {
+			Text("Your final score is \(score)")
 		}
 	}
 	
 	func flagTapped(_ number: Int) {
 		if number == correctAnswer {
 			scoreTitle = "Correct"
+			score += 1
 		} else {
-			scoreTitle = "Wrong"
+			scoreTitle = "Wrong, \n That's the flag of \(countries[number])"
 		}
 		showingScore = true
+		if attempts == 8 {
+			isShowingSummary = true
+		}
 	}
 	
 	func askQuestion() {
 		countries.shuffle()
 		correctAnswer = Int.random(in: 0...2)
+	}
+	func resetGame() {
+		attempts = 0
+		score = 0
+		isShowingSummary = false
+		showingScore = false
 	}
 }
 
