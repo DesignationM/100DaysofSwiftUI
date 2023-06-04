@@ -37,8 +37,10 @@ struct ContentView: View {
 							.foregroundColor(.secondary)
 							.font(.subheadline.weight(.heavy))
 						Text(countries[correctAnswer])
+							.blueTitle()
 							.font(.largeTitle.weight(.semibold))
 							.foregroundColor(.secondary)
+							
 					}
 					.frame(maxWidth: .infinity)
 					.padding(.vertical, 20)
@@ -107,6 +109,19 @@ struct FlagImage: View {
 			.renderingMode(.original)
 			.clipShape(RoundedRectangle(cornerRadius: 5))
 			.shadow(radius: 5)
+	}
+}
+
+extension View {
+	func blueTitle() -> some View {
+		modifier(BlueText())
+	}
+}
+struct BlueText: ViewModifier {
+	func body(content: Content) -> some View {
+		content
+			.font(.largeTitle)
+			.foregroundColor(.blue)
 	}
 }
 
