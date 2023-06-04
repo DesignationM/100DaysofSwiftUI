@@ -67,8 +67,10 @@ struct ContentView: View {
 				Section {
 					let total = totalPerPerson * Double(numberOfPeople + 2)
 					Text(total, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+						.foregroundColor(tipPercentage == 0 ? .red : .black)
 				} header: {
 					Text("Total amount")
+						.foregroundColor(tipPercentage == 0 ? .red : .black)
 				}
 			}
 			.navigationTitle("WeSplit")
