@@ -50,10 +50,7 @@ struct ContentView: View {
 							attempts += 1
 							flagTapped(number)
 						} label: {
-							Image(countries[number])
-								.renderingMode(.original)
-								.clipShape(RoundedRectangle(cornerRadius: 5))
-								.shadow(radius: 5)
+							FlagImage(imageName: countries[number])
 						}
 					}
 				}
@@ -100,6 +97,16 @@ struct ContentView: View {
 		score = 0
 		isShowingSummary = false
 		showingScore = false
+	}
+}
+
+struct FlagImage: View {
+	let imageName: String
+	var body: some View {
+		Image(imageName)
+			.renderingMode(.original)
+			.clipShape(RoundedRectangle(cornerRadius: 5))
+			.shadow(radius: 5)
 	}
 }
 
