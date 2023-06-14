@@ -15,37 +15,37 @@ struct ContentView: View {
 	@State private var isShowingRed = false
     var body: some View {
 		VStack {
-			HStack(spacing: 0) {
-				ForEach(0..<letters.count, id: \.self) { num in
-					Text(String(letters[num]))
-						.padding(5)
-						.font(.title)
-						.background(enabled ? .blue : .red)
-						.offset(dragAmount)
-						.animation(.default.delay(Double(num) / 20), value: dragAmount)
-				}
-			}
-			.gesture(
-			DragGesture()
-				.onChanged { dragAmount = $0.translation}
-				.onEnded { _ in
-					dragAmount = .zero
-					enabled.toggle()
-				})
+//			HStack(spacing: 0) {
+//				ForEach(0..<letters.count, id: \.self) { num in
+//					Text(String(letters[num]))
+//						.padding(5)
+//						.font(.title)
+//						.background(enabled ? .blue : .red)
+//						.offset(dragAmount)
+//						.animation(.default.delay(Double(num) / 20), value: dragAmount)
+//				}
+//			}
+//			.gesture(
+//			DragGesture()
+//				.onChanged { dragAmount = $0.translation}
+//				.onEnded { _ in
+//					dragAmount = .zero
+//					enabled.toggle()
+//				})
 
-			LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
-				.frame(width: 300, height: 200)
-				.clipShape(RoundedRectangle(cornerRadius: 10))
-				.offset(dragAmount)
-				.gesture(
-					DragGesture()
-					.onChanged { dragAmount = $0.translation }
-						.onEnded { _ in //dragAmount = .zero}
-							withAnimation(.spring()) {
-								dragAmount = .zero
-							}
-						}
-				)
+//			LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//				.frame(width: 300, height: 200)
+//				.clipShape(RoundedRectangle(cornerRadius: 10))
+//				.offset(dragAmount)
+//				.gesture(
+//					DragGesture()
+//					.onChanged { dragAmount = $0.translation }
+//						.onEnded { _ in //dragAmount = .zero}
+//							withAnimation(.spring()) {
+//								dragAmount = .zero
+//							}
+//						}
+//				)
 				
 		//	Stepper("Scale amount", value: $animationAmount.animation(), in: 1...10)
 			
@@ -79,18 +79,18 @@ struct ContentView: View {
 //			.onAppear {
 //				animationAmount = 2
 //			}
-			Button("Tap Me") {
-				withAnimation {
-					isShowingRed.toggle()
-				}
-			}
-			if isShowingRed {
-				Rectangle()
-					.fill(.red)
-					.frame(width: 200, height: 200)
-					//.transition(.asymmetric(insertion: .scale, removal: .opacity))
-					.transition(.pivot)
-			}
+//			Button("Tap Me") {
+//				withAnimation {
+//					isShowingRed.toggle()
+//				}
+//			}
+//			if isShowingRed {
+//				Rectangle()
+//					.fill(.red)
+//					.frame(width: 200, height: 200)
+//					//.transition(.asymmetric(insertion: .scale, removal: .opacity))
+//					.transition(.pivot)
+//			}
         }
 		.onTapGesture {
 			withAnimation {

@@ -16,7 +16,11 @@ struct ContentView: View {
 	@State private var correctAnswer = Int.random(in: 0...2)
 	@State private var attempts = 0
 	@State private var isShowingSummary = false
-	
+	@State private var firstFlag = false
+	@State private var secondFlag = false
+	@State private var thirdFlag = false
+	@State private var opacity = 1.0
+
 	var body: some View {
 		ZStack {
 //			LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
@@ -52,8 +56,11 @@ struct ContentView: View {
 							attempts += 1
 							flagTapped(number)
 						} label: {
-							FlagImage(imageName: countries[number])
+							FlagImage(number: number,
+									  imageName: countries[number])
 						}
+					
+						
 					}
 				}
 				Spacer()
@@ -84,6 +91,7 @@ struct ContentView: View {
 		} else {
 			scoreTitle = "Wrong, \n That's the flag of \(countries[number])"
 		}
+		
 		showingScore = true
 		if attempts == 8 {
 			isShowingSummary = true
@@ -94,6 +102,7 @@ struct ContentView: View {
 		countries.shuffle()
 		correctAnswer = Int.random(in: 0...2)
 	}
+						  
 	func resetGame() {
 		attempts = 0
 		score = 0
@@ -103,12 +112,24 @@ struct ContentView: View {
 }
 
 struct FlagImage: View {
+	@State var number: Int
+	@State private var animationAmount = 0.0
 	let imageName: String
 	var body: some View {
 		Image(imageName)
 			.renderingMode(.original)
 			.clipShape(RoundedRectangle(cornerRadius: 5))
 			.shadow(radius: 5)
+		/// Animation project wrap up
+		/// Challenge 1: when you tap a flag, make it spin around 360 degrees on the Y axis.
+//			.rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+//			.onTapGesture {
+//				withAnimation(
+//					.interpolatingSpring(stiffness: 5, damping: 2)) {
+//						animationAmount += 360
+//					}
+//				}
+//			
 	}
 }
 
