@@ -19,8 +19,10 @@ struct ContentView: View {
 	@State private var firstFlag = false
 	@State private var secondFlag = false
 	@State private var thirdFlag = false
-	@State private var opacity = 1.0
-
+	@State private var opacity = [1.0, 1.0, 1.0]
+	@State private var animationAmount = [0.0, 0.0, 0.0]
+	@State private var scale = [1.0, 1.0, 1.0]
+	
 	var body: some View {
 		ZStack {
 //			LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
@@ -59,7 +61,9 @@ struct ContentView: View {
 							FlagImage(number: number,
 									  imageName: countries[number])
 						}
-					
+						.rotation3DEffect(.degrees(animationAmount[number]), axis: (x: 0, y: 1, z: 0))
+						.opacity(opacity[number])
+						.scaleEffect(scale[number])
 						
 					}
 				}
@@ -91,7 +95,36 @@ struct ContentView: View {
 		} else {
 			scoreTitle = "Wrong, \n That's the flag of \(countries[number])"
 		}
-		
+		/// Challenge 2
+		/// Make the other two buttons fade out to 25% opacity
+		if number == 0 {
+			withAnimation(
+				.interpolatingSpring(stiffness: 5, damping: 2)) {
+					animationAmount[number] += 360
+					opacity[1] -= 0.25
+					opacity[2] -= 0.25
+					scale[1] -= 0.25
+					scale[2] -= 0.25
+				}
+		} else if number == 1 {
+			withAnimation(
+				.interpolatingSpring(stiffness: 5, damping: 2)) {
+					animationAmount[number] += 360
+					opacity[0] -= 0.25
+					opacity[2] -= 0.25
+					scale[0] -= 0.25
+					scale[2] -= 0.25
+				}
+		} else {
+			withAnimation(
+				.interpolatingSpring(stiffness: 5, damping: 2)) {
+					animationAmount[number] += 360
+					opacity[0] -= 0.25
+					opacity[1] -= 0.25
+					scale[0] -= 0.25
+					scale[1] -= 0.25
+				}
+		}
 		showingScore = true
 		if attempts == 8 {
 			isShowingSummary = true
@@ -99,8 +132,13 @@ struct ContentView: View {
 	}
 	
 	func askQuestion() {
-		countries.shuffle()
-		correctAnswer = Int.random(in: 0...2)
+		withAnimation {
+			countries.shuffle()
+			correctAnswer = Int.random(in: 0...2)
+			animationAmount = [0.0, 0.0, 0.0]
+			opacity = [1.0, 1.0, 1.0]
+			scale = [1.0, 1.0, 1.0]
+		}
 	}
 						  
 	func resetGame() {
@@ -109,11 +147,12 @@ struct ContentView: View {
 		isShowingSummary = false
 		showingScore = false
 	}
+	
 }
 
 struct FlagImage: View {
 	@State var number: Int
-	@State private var animationAmount = 0.0
+
 	let imageName: String
 	var body: some View {
 		Image(imageName)
@@ -122,14 +161,11 @@ struct FlagImage: View {
 			.shadow(radius: 5)
 		/// Animation project wrap up
 		/// Challenge 1: when you tap a flag, make it spin around 360 degrees on the Y axis.
-//			.rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+
 //			.onTapGesture {
-//				withAnimation(
-//					.interpolatingSpring(stiffness: 5, damping: 2)) {
-//						animationAmount += 360
-//					}
+//
 //				}
-//			
+//
 	}
 }
 
