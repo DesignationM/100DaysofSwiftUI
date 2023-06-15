@@ -19,36 +19,42 @@ struct ContentView: View {
 	var questionAmount = [5, 10, 20]
 	
     var body: some View {
-		Form {
-			Section {
-				Stepper("Tables to Practice: \(tablesToPractice)", value: $tablesToPractice, in: 2...12)
-				Text("How many questions:")
-				Picker("How many questions:", selection: $questionChoice) {
-					ForEach(questionAmount, id: \.self) { choice in
-						Text("\(choice)")
-					}
-				}
-				.pickerStyle(.segmented)
-				
-			} header: {
-				Text("Setup")
-			}
-			
-			
-			Button("Generate") {
-				test()
-			}
-			if showQuestions {
+		NavigationStack {
+			Form {
 				Section {
-					withAnimation {
-						ForEach(questionBank) { bank in
-							QuestionView(question: bank)
+					Stepper("Tables to Practice: \(tablesToPractice)", value: $tablesToPractice, in: 2...12)
+					Text("How many questions:")
+					Picker("How many questions:", selection: $questionChoice) {
+						ForEach(questionAmount, id: \.self) { choice in
+							Text("\(choice)")
 						}
 					}
+					.pickerStyle(.segmented)
+					
 				} header: {
-					Text("Questions and Answers")
+					Text("Setup")
+				}
+				
+				Section {
+					HStack {
+						Button("Generate") {
+							test()
+						}
+					}
+				} 
+				if showQuestions {
+					Section {
+						withAnimation {
+							ForEach(questionBank) { bank in
+								QuestionView(question: bank)
+							}
+						}
+					} header: {
+						Text("Questions and Answers")
+					}
 				}
 			}
+			.navigationTitle("Multiplication Tables")
 		}
     }
 	
@@ -63,7 +69,7 @@ struct ContentView: View {
 		
 		while(temp <= questionChoice) {
 			let tableLimit = tablesToPractice + 1
-			let part1 = Int.random(in: 2..<tableLimit)
+			let part1 = tablesToPractice
 			let part2 = Int.random(in: 2..<13)
 			questionBank.append(questionPair(questions: (part1, part2)))
 			print(temp)
@@ -86,7 +92,7 @@ struct QuestionView: View {
 	@State var answer = 0
 	@State var showAnswer = false
 	var body: some View {
-		let answer = question.questions.0 * question.questions.1
+		//let answer = question.questions.0 * question.questions.1
 		HStack {
 			VStack {
 				Text("\(question.questions.0) x \(question.questions.1)")
@@ -110,7 +116,7 @@ struct QuestionView: View {
 			
 		}
 	}
-	func checkAnswer() {https:
+	func checkAnswer() {
 		showAnswer = true
 	}
 }
