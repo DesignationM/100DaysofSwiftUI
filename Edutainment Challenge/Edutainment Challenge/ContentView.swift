@@ -13,7 +13,8 @@ import SwiftUI
 struct ContentView: View {
 	@State var questionChoice = 5
 	@State var tablesToPractice: Int = 2
-	@State var questionBank: [Int] = []
+	@State var questionBank = [questionPair]()
+	@State var showQuestions = false
 	
 	var questionAmount = [5, 10, 20]
 	
@@ -26,23 +27,66 @@ struct ContentView: View {
 					ForEach(questionAmount, id: \.self) { choice in
 						Text("\(choice)")
 					}
-				} .pickerStyle(.segmented)
+				}
+				.pickerStyle(.segmented)
 				
 			} header: {
 				Text("Setup")
 			}
 			
 			
-				Button("Generate", action: test)
-			
+			Button("Generate") {
+				test()
+			}
+			if showQuestions {
+				Section {
+					withAnimation {
+						ForEach(questionBank) { bank in
+							QuestionView(question: bank)
+						}
+					}
+				} header: {
+					Text("Questions and Answers")
+				}
+			}
 		}
     }
+	
 	func test() {
-		let tempAmt = questionChoice + 1
-		print(tempAmt)
-		print("something")
+		questionBank = []
+		// print("something")
+		// let tempAmt = questionChoice + 1
+		//		ForEach(0..<questionAmount, id: \.self) { amount in
+		//			print(amount + 1)
+		//	}
+		var temp = 1
+		
+		while(temp <= questionChoice) {
+			let tableLimit = tablesToPractice + 1
+			let part1 = Int.random(in: 2..<tableLimit)
+			let part2 = Int.random(in: 2..<13)
+			questionBank.append(questionPair(questions: (part1, part2)))
+			print(temp)
+			temp += 1
+		}
+		print(questionBank)
+		//print(questionChoice)
+		//print(tempAmt)
+		showQuestions = true
 	}
 	
+}
+struct questionPair: Identifiable {
+	var id: UUID = UUID()
+	var questions: (Int, Int)
+}
+
+struct QuestionView: View {
+	var question: questionPair
+	var body: some View {
+		let answer = question.questions.0 * question.questions.1
+		Text("\(question.questions.0) x \(question.questions.1) = \(answer)")
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
