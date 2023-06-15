@@ -83,9 +83,35 @@ struct questionPair: Identifiable {
 
 struct QuestionView: View {
 	var question: questionPair
+	@State var answer = 0
+	@State var showAnswer = false
 	var body: some View {
 		let answer = question.questions.0 * question.questions.1
-		Text("\(question.questions.0) x \(question.questions.1) = \(answer)")
+		HStack {
+			VStack {
+				Text("\(question.questions.0) x \(question.questions.1)")
+				TextField("", value: $answer, format: .number)
+					.keyboardType(.decimalPad)
+					.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+					.frame(maxWidth: 40)
+					.multilineTextAlignment(.center)
+			}
+			Spacer()
+			Button("Check") {
+				checkAnswer()
+			}
+			if showAnswer {
+				let questionAnswer = question.questions.0 * question.questions.1
+				let isCorrect = answer == questionAnswer
+				Image(systemName: isCorrect ? "checkmark.seal.fill" : "wrongwaysign.fill")
+					.foregroundColor(isCorrect ? .green : .red)
+			}
+
+			
+		}
+	}
+	func checkAnswer() {https:
+		showAnswer = true
 	}
 }
 
