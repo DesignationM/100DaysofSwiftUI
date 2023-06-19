@@ -8,55 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
+	let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+	let missions: [Mission] = Bundle.main.decode("missions.json")
+	
+	let columns = [
+		GridItem(.adaptive(minimum: 150))
+	]
     var body: some View {
-//        GeometryReader { geo in
-//            Image("Batman")
-//				.resizable()
-//				.scaledToFit()
-//				.frame(width: geo.size.width * 0.8)
-//				.frame(width: geo.size.width, height: geo.size.height)
-//        }
-//		ScrollView(.horizontal) {
-//			LazyHStack(spacing: 10) {
-//				ForEach(0..<100) {
-//					Text("Item \($0)")
-//						.font(.title)
-//				}
-//			}
-//			
-//		}
-//		NavigationView {
-//			List(0..<100) { row in
-//				NavigationLink {
-//					Text("Detail \(row)")
-//				} label: {
-//					Text("Row \(row)")
-//						.padding()
-//				}
-//			}
-//			.navigationTitle("SwiftUI")
-//
-//		}
-		VStack {
-			Button("Decode JSON") {
-				let input = """
- {
-  "name": "Taylor Swift",
-  "address": {
-   "street": "555 Taylor Swift Avenue",
-   "city": "Nashville"
-  }
- }
- """
-				print("test")
-				let data = Data(input.utf8)
-				let decoder = JSONDecoder()
-				if let user = try? decoder.decode(User.self, from: data) {
-					print(user.address.street)
+		NavigationView {
+			ScrollView {
+				LazyVGrid(columns: columns) {
+					ForEach(missions) { mission in
+						NavigationLink {
+							Text("Detail view")
+						} label: {
+							VStack {
+								Image(mission.image)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 100, height: 100)
+									.padding()
+								
+								VStack {
+									Text(mission.displayName)
+										.font(.headline)
+										.foregroundColor(.white)
+									Text(mission.formattedLaunchDate)
+										.font(.caption)
+										.foregroundColor(.white.opacity(0.5))
+								}
+								.padding(.vertical)
+								.frame(maxWidth: .infinity)
+								.background(.lightBackground)
+							}
+							.background(.white)
+							.clipShape(RoundedRectangle(cornerRadius: 10))
+							.overlay(
+								RoundedRectangle(cornerRadius: 10)
+									.stroke(.lightBackground)
+							)
+						}
+					}
 				}
-				// .padding()
+				.padding([.horizontal, .bottom])
 			}
+			.navigationTitle("Moonshot")
+			.background(.darkBackground)
+			.preferredColorScheme(.dark)
 		}
+		
     }
 }
 
@@ -68,6 +68,31 @@ struct User: Codable {
 struct Address: Codable {
 	let street: String
 	let city: String
+}
+
+
+
+struct Mission: Codable, Identifiable {
+	struct CrewRole: Codable {
+		let name: String
+		let role: String
+	}
+	let id: Int
+	let launchDate: Date?
+	let crew: [CrewRole]
+	let description: String
+	
+	var displayName: String {
+		"Apollo \(id)"
+	}
+	
+	var image: String {
+		"apollo\(id)"
+	}
+	
+	var formattedLaunchDate: String {
+		launchDate?.formatted(date: .abbreviated, time: .omitted) ?? "N/A"
+	}
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
