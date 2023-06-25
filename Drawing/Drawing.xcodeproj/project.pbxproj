@@ -11,6 +11,10 @@
 		40AB4E8D2A453E3600F124FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E8C2A453E3600F124FA /* ContentView.swift */; };
 		40AB4E8F2A453E3600F124FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AB4E8E2A453E3600F124FA /* Assets.xcassets */; };
 		40AB4E922A453E3600F124FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AB4E912A453E3600F124FA /* Preview Assets.xcassets */; };
+		40AB4E992A47B9D100F124FA /* GameIdea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E982A47B9D100F124FA /* GameIdea.swift */; };
+		40AB4E9B2A47BAB000F124FA /* Trapezoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E9A2A47BAB000F124FA /* Trapezoid.swift */; };
+		40AB4E9D2A47BCC400F124FA /* Checkerboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E9C2A47BCC400F124FA /* Checkerboard.swift */; };
+		40AB4E9F2A47BEA300F124FA /* Spirograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E9E2A47BEA300F124FA /* Spirograph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		40AB4E8C2A453E3600F124FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		40AB4E8E2A453E3600F124FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40AB4E912A453E3600F124FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		40AB4E982A47B9D100F124FA /* GameIdea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameIdea.swift; sourceTree = "<group>"; };
+		40AB4E9A2A47BAB000F124FA /* Trapezoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trapezoid.swift; sourceTree = "<group>"; };
+		40AB4E9C2A47BCC400F124FA /* Checkerboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkerboard.swift; sourceTree = "<group>"; };
+		40AB4E9E2A47BEA300F124FA /* Spirograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirograph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +59,14 @@
 		40AB4E892A453E3600F124FA /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				40AB4E982A47B9D100F124FA /* GameIdea.swift */,
 				40AB4E8A2A453E3600F124FA /* DrawingApp.swift */,
 				40AB4E8C2A453E3600F124FA /* ContentView.swift */,
 				40AB4E8E2A453E3600F124FA /* Assets.xcassets */,
 				40AB4E902A453E3600F124FA /* Preview Content */,
+				40AB4E9A2A47BAB000F124FA /* Trapezoid.swift */,
+				40AB4E9C2A47BCC400F124FA /* Checkerboard.swift */,
+				40AB4E9E2A47BEA300F124FA /* Spirograph.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -137,6 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AB4E9B2A47BAB000F124FA /* Trapezoid.swift in Sources */,
+				40AB4E9D2A47BCC400F124FA /* Checkerboard.swift in Sources */,
+				40AB4E9F2A47BEA300F124FA /* Spirograph.swift in Sources */,
+				40AB4E992A47B9D100F124FA /* GameIdea.swift in Sources */,
 				40AB4E8D2A453E3600F124FA /* ContentView.swift in Sources */,
 				40AB4E8B2A453E3600F124FA /* DrawingApp.swift in Sources */,
 			);

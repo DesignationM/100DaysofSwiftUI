@@ -12,42 +12,111 @@ struct ContentView: View {
 	@State private var petalWidth = 100.0
 	
 	@State private var colorCycle = 0.0
+	
+	@State private var insetAmount = 50.0
+	
+	@State private var rows = 4
+	@State private var columns = 4
+	
+	@State private var innerRadius = 125.0
+	@State private var outerRadius = 75.0
+	@State private var distance = 25.0
+	@State private var amount = 1.0
+	@State private var hue = 0.6
+	
     var body: some View {
-		ZStack {
-			VStack {
-				ColorCyclingCircle(amount: colorCycle)
-					.frame(width: 300, height: 300)
-				
-				Slider(value: $colorCycle)
-	//			Triangle()
-	//			// .fill(.blue)
-	//			.stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-	//
-	//			Triangle()
-	//				.fill(.red)
-	//				.frame(width: 300, height: 300)
-	//
-	//			Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockWise: true)
-	//				.stroke(.blue, lineWidth: 10)
-	//				.frame(width: 300, height: 300)
-	//
-	//			Circle()
-	//				.strokeBorder(.blue, lineWidth: 40)
-				Flower(petalOffSet: petalOffset, petalWidth: petalWidth)
-					.fill(.red, style: FillStyle(eoFill: true))
-					//.stroke(.red, lineWidth: 1)
-				
-				Text("Offset")
-				Slider(value: $petalOffset, in: -40...40)
+		//ZStack {
+		VStack(spacing: 0) {
+			Spacer()
+//			Trapezoid(insetAmount: insetAmount)
+//					.frame(width: 200, height: 100)
+//					.onTapGesture {
+//						withAnimation {
+//							insetAmount = Double.random(in: 10...90)
+//						}
+//				}
+//			Spacer()
+//			Checkerboard(rows: rows, columns: columns)
+//				.onTapGesture {
+//					withAnimation(.linear(duration: 3)) {
+//						rows = 8
+//						columns = 16
+//					}
+//				}
+			Spirograph(innerRadius: Int(innerRadius),
+					   outerRadius: Int(outerRadius),
+					   distance: Int(distance),
+					   amount: amount)
+			.stroke(Color(hue: hue,
+						  saturation: 1,
+						  brightness: 1),
+			lineWidth: 1)
+			.frame(width: 300, height: 300)
+			Spacer()
+			
+			Group {
+				Text("Inner radius: \(Int(innerRadius))")
+				Slider(value: $innerRadius, in: 10...150, step: 1)
 					.padding([.horizontal, .bottom])
 				
-				Text("Width")
-				Slider(value: $petalWidth, in: 0...100)
+				Text("Outer radius: \(Int(outerRadius))")
+				Slider(value: $outerRadius, in: 10...150, step: 1)
+					.padding([.horizontal, .bottom])
+				
+				Text("Distance: \(Int(distance))")
+				Slider(value: $distance, in: 1...150, step: 1)
+					.padding([.horizontal, .bottom])
+				
+				Text("Amount: \(amount, format: .number.precision(.fractionLength(2)))")
+				Slider(value: $amount)
+					.padding([.horizontal, .bottom])
+				
+				Text("Color")
+				Slider(value: $hue)
 					.padding(.horizontal)
 			}
-			.padding()
 		}
-		.drawingGroup()
+			//VStack {
+//				Image("PaulHudson")
+//				.colorMultiply(.red)
+				//Rectangle()
+//					.fill(.red)
+//					.blendMode(.multiply)
+//				ColorCyclingCircle(amount: colorCycle)
+//					.frame(width: 300, height: 300)
+//
+//				Slider(value: $colorCycle)
+//	//			Triangle()
+//	//			// .fill(.blue)
+//	//			.stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+//	//
+//	//			Triangle()
+//	//				.fill(.red)
+//	//				.frame(width: 300, height: 300)
+//	//
+//	//			Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockWise: true)
+//	//				.stroke(.blue, lineWidth: 10)
+//	//				.frame(width: 300, height: 300)
+//	//
+//	//			Circle()
+//	//				.strokeBorder(.blue, lineWidth: 40)
+//				Flower(petalOffSet: petalOffset, petalWidth: petalWidth)
+//					.fill(.red, style: FillStyle(eoFill: true))
+//					//.stroke(.red, lineWidth: 1)
+//
+//				Text("Offset")
+//				Slider(value: $petalOffset, in: -40...40)
+//					.padding([.horizontal, .bottom])
+//
+//				Text("Width")
+//				Slider(value: $petalWidth, in: 0...100)
+//					.padding(.horizontal)
+//			}
+//			.padding()
+		// }
+		//.drawingGroup()
+//		.frame(width: 400, height: 500)
+//		.clipped()
     }
 }
 
