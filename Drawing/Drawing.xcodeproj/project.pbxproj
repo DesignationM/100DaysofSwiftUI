@@ -62,11 +62,11 @@
 				40AB4E982A47B9D100F124FA /* GameIdea.swift */,
 				40AB4E8A2A453E3600F124FA /* DrawingApp.swift */,
 				40AB4E8C2A453E3600F124FA /* ContentView.swift */,
-				40AB4E8E2A453E3600F124FA /* Assets.xcassets */,
-				40AB4E902A453E3600F124FA /* Preview Content */,
 				40AB4E9A2A47BAB000F124FA /* Trapezoid.swift */,
 				40AB4E9C2A47BCC400F124FA /* Checkerboard.swift */,
 				40AB4E9E2A47BEA300F124FA /* Spirograph.swift */,
+				40AB4E8E2A453E3600F124FA /* Assets.xcassets */,
+				40AB4E902A453E3600F124FA /* Preview Content */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";

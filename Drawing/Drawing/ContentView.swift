@@ -27,7 +27,22 @@ struct ContentView: View {
     var body: some View {
 		//ZStack {
 		VStack(spacing: 0) {
-			Spacer()
+			/// Challenge 1: Create an Arrow shape - having it
+			/// point straight up is fine.
+			/// This could be a rectangle/triangle-style arrow,
+			/// or perhaps three lines,
+			/// or maybe something else depending on
+			/// what kind of arrow you want to draw.
+			///
+			///
+			/// Challenge 2: Make the line thickness of your Arrow
+			/// shape animatable.
+			///
+			/// Create a ColorCyclingRectangle shape that is
+			/// the rectangular cousin of ColorCyclingCircle,
+			/// allowing us to control the position of the gradient
+			/// using one or more properties
+//			Spacer()
 //			Trapezoid(insetAmount: insetAmount)
 //					.frame(width: 200, height: 100)
 //					.onTapGesture {
@@ -43,38 +58,39 @@ struct ContentView: View {
 //						columns = 16
 //					}
 //				}
-			Spirograph(innerRadius: Int(innerRadius),
-					   outerRadius: Int(outerRadius),
-					   distance: Int(distance),
-					   amount: amount)
-			.stroke(Color(hue: hue,
-						  saturation: 1,
-						  brightness: 1),
-			lineWidth: 1)
-			.frame(width: 300, height: 300)
-			Spacer()
 			
-			Group {
-				Text("Inner radius: \(Int(innerRadius))")
-				Slider(value: $innerRadius, in: 10...150, step: 1)
-					.padding([.horizontal, .bottom])
-				
-				Text("Outer radius: \(Int(outerRadius))")
-				Slider(value: $outerRadius, in: 10...150, step: 1)
-					.padding([.horizontal, .bottom])
-				
-				Text("Distance: \(Int(distance))")
-				Slider(value: $distance, in: 1...150, step: 1)
-					.padding([.horizontal, .bottom])
-				
-				Text("Amount: \(amount, format: .number.precision(.fractionLength(2)))")
-				Slider(value: $amount)
-					.padding([.horizontal, .bottom])
-				
-				Text("Color")
-				Slider(value: $hue)
-					.padding(.horizontal)
-			}
+//			Spirograph(innerRadius: Int(innerRadius),
+//					   outerRadius: Int(outerRadius),
+//					   distance: Int(distance),
+//					   amount: amount)
+//			.stroke(Color(hue: hue,
+//						  saturation: 1,
+//						  brightness: 1),
+//			lineWidth: 1)
+//			.frame(width: 300, height: 300)
+//			Spacer()
+//
+//			Group {
+//				Text("Inner radius: \(Int(innerRadius))")
+//				Slider(value: $innerRadius, in: 10...150, step: 1)
+//					.padding([.horizontal, .bottom])
+//
+//				Text("Outer radius: \(Int(outerRadius))")
+//				Slider(value: $outerRadius, in: 10...150, step: 1)
+//					.padding([.horizontal, .bottom])
+//
+//				Text("Distance: \(Int(distance))")
+//				Slider(value: $distance, in: 1...150, step: 1)
+//					.padding([.horizontal, .bottom])
+//
+//				Text("Amount: \(amount, format: .number.precision(.fractionLength(2)))")
+//				Slider(value: $amount)
+//					.padding([.horizontal, .bottom])
+//
+//				Text("Color")
+//				Slider(value: $hue)
+//					.padding(.horizontal)
+//			}
 		}
 			//VStack {
 //				Image("PaulHudson")
