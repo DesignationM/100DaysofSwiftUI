@@ -1,12 +1,26 @@
 //
-//  Checkerboard.swift
+//  CheckerBoardView.swift
 //  Drawing
 //
-//  Created by KogaWolfe on 6/24/23.
+//  Created by KogaWolfe on 6/26/23.
 //
 
-import Foundation
 import SwiftUI
+
+struct CheckerBoardView: View {
+	@State private var rows = 4
+	@State private var columns = 4
+	
+    var body: some View {
+		Checkerboard(rows: rows, columns: columns)
+			.onTapGesture {
+				withAnimation(.linear(duration: 3)) {
+					rows += 2
+					columns += 2
+				}
+			}
+    }
+}
 
 struct Checkerboard: Shape {
 	var rows: Int
@@ -44,4 +58,10 @@ struct Checkerboard: Shape {
 		
 		return path
 	}
+}
+
+struct CheckerBoardView_Previews: PreviewProvider {
+    static var previews: some View {
+        CheckerBoardView()
+    }
 }

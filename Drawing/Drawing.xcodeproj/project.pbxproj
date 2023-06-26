@@ -12,9 +12,14 @@
 		40AB4E8F2A453E3600F124FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AB4E8E2A453E3600F124FA /* Assets.xcassets */; };
 		40AB4E922A453E3600F124FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AB4E912A453E3600F124FA /* Preview Assets.xcassets */; };
 		40AB4E992A47B9D100F124FA /* GameIdea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E982A47B9D100F124FA /* GameIdea.swift */; };
-		40AB4E9B2A47BAB000F124FA /* Trapezoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E9A2A47BAB000F124FA /* Trapezoid.swift */; };
-		40AB4E9D2A47BCC400F124FA /* Checkerboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E9C2A47BCC400F124FA /* Checkerboard.swift */; };
-		40AB4E9F2A47BEA300F124FA /* Spirograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4E9E2A47BEA300F124FA /* Spirograph.swift */; };
+		40AB4EA52A49484B00F124FA /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EA42A49484B00F124FA /* TriangleView.swift */; };
+		40AB4EA72A4948A400F124FA /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EA62A4948A400F124FA /* FlowerView.swift */; };
+		40AB4EA92A49498200F124FA /* CheckerBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EA82A49498200F124FA /* CheckerBoardView.swift */; };
+		40AB4EAB2A494A2200F124FA /* SpirographView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EAA2A494A2200F124FA /* SpirographView.swift */; };
+		40AB4EAD2A494ACC00F124FA /* ViewMultiply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EAC2A494ACC00F124FA /* ViewMultiply.swift */; };
+		40AB4EAF2A494B1600F124FA /* ColorCyclingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EAE2A494B1600F124FA /* ColorCyclingCircleView.swift */; };
+		40AB4EB12A494BAF00F124FA /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EB02A494BAF00F124FA /* ArcView.swift */; };
+		40AB4EB32A494BF600F124FA /* TrapezoidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB4EB22A494BF600F124FA /* TrapezoidView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +29,14 @@
 		40AB4E8E2A453E3600F124FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40AB4E912A453E3600F124FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		40AB4E982A47B9D100F124FA /* GameIdea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameIdea.swift; sourceTree = "<group>"; };
-		40AB4E9A2A47BAB000F124FA /* Trapezoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trapezoid.swift; sourceTree = "<group>"; };
-		40AB4E9C2A47BCC400F124FA /* Checkerboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkerboard.swift; sourceTree = "<group>"; };
-		40AB4E9E2A47BEA300F124FA /* Spirograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirograph.swift; sourceTree = "<group>"; };
+		40AB4EA42A49484B00F124FA /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		40AB4EA62A4948A400F124FA /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
+		40AB4EA82A49498200F124FA /* CheckerBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerBoardView.swift; sourceTree = "<group>"; };
+		40AB4EAA2A494A2200F124FA /* SpirographView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpirographView.swift; sourceTree = "<group>"; };
+		40AB4EAC2A494ACC00F124FA /* ViewMultiply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMultiply.swift; sourceTree = "<group>"; };
+		40AB4EAE2A494B1600F124FA /* ColorCyclingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCyclingCircleView.swift; sourceTree = "<group>"; };
+		40AB4EB02A494BAF00F124FA /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
+		40AB4EB22A494BF600F124FA /* TrapezoidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapezoidView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +72,16 @@
 				40AB4E982A47B9D100F124FA /* GameIdea.swift */,
 				40AB4E8A2A453E3600F124FA /* DrawingApp.swift */,
 				40AB4E8C2A453E3600F124FA /* ContentView.swift */,
-				40AB4E9A2A47BAB000F124FA /* Trapezoid.swift */,
-				40AB4E9C2A47BCC400F124FA /* Checkerboard.swift */,
-				40AB4E9E2A47BEA300F124FA /* Spirograph.swift */,
 				40AB4E8E2A453E3600F124FA /* Assets.xcassets */,
 				40AB4E902A453E3600F124FA /* Preview Content */,
+				40AB4EA42A49484B00F124FA /* TriangleView.swift */,
+				40AB4EA62A4948A400F124FA /* FlowerView.swift */,
+				40AB4EA82A49498200F124FA /* CheckerBoardView.swift */,
+				40AB4EAA2A494A2200F124FA /* SpirographView.swift */,
+				40AB4EAC2A494ACC00F124FA /* ViewMultiply.swift */,
+				40AB4EAE2A494B1600F124FA /* ColorCyclingCircleView.swift */,
+				40AB4EB02A494BAF00F124FA /* ArcView.swift */,
+				40AB4EB22A494BF600F124FA /* TrapezoidView.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -149,11 +164,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40AB4E9B2A47BAB000F124FA /* Trapezoid.swift in Sources */,
-				40AB4E9D2A47BCC400F124FA /* Checkerboard.swift in Sources */,
-				40AB4E9F2A47BEA300F124FA /* Spirograph.swift in Sources */,
+				40AB4EB12A494BAF00F124FA /* ArcView.swift in Sources */,
+				40AB4EAB2A494A2200F124FA /* SpirographView.swift in Sources */,
+				40AB4EB32A494BF600F124FA /* TrapezoidView.swift in Sources */,
+				40AB4EAF2A494B1600F124FA /* ColorCyclingCircleView.swift in Sources */,
+				40AB4EA92A49498200F124FA /* CheckerBoardView.swift in Sources */,
 				40AB4E992A47B9D100F124FA /* GameIdea.swift in Sources */,
+				40AB4EAD2A494ACC00F124FA /* ViewMultiply.swift in Sources */,
 				40AB4E8D2A453E3600F124FA /* ContentView.swift in Sources */,
+				40AB4EA52A49484B00F124FA /* TriangleView.swift in Sources */,
+				40AB4EA72A4948A400F124FA /* FlowerView.swift in Sources */,
 				40AB4E8B2A453E3600F124FA /* DrawingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
