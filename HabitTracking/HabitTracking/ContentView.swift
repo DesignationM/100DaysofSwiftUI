@@ -30,7 +30,11 @@ struct ContentView: View {
 				List {
 					Section {
 						ForEach(items.trackedItems) { habitItem in
-							ListItem(item: habitItem)
+							NavigationLink {
+								DetailView(item: habitItem)
+							} label: {
+								ListItem(item: habitItem)
+							}
 						}
 						.onDelete(perform: removeItem)
 					}
