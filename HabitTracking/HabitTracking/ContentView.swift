@@ -31,7 +31,7 @@ struct ContentView: View {
 					Section {
 						ForEach(items.trackedItems) { habitItem in
 							NavigationLink {
-								DetailView(item: habitItem)
+								DetailView(item: habitItem, items: items)
 							} label: {
 								ListItem(item: habitItem)
 							}
