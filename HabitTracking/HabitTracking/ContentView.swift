@@ -8,19 +8,75 @@
 import SwiftUI
 
 struct ContentView: View {
+	@ObservedObject var items = Tracker()
+	
+	@State private var showingAddItem = false
+	
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+		NavigationView {
+			if items.trackedItems.isEmpty {
+				DefaultView()
+					.sheet(isPresented: $showingAddItem) {
+						AddView(items: items)
+					}
+					.toolbar {
+						Button {
+							showingAddItem = true
+						} label: {
+							Image(systemName: "plus.circle")
+						}
+					}
+			} else {
+				List {
+					Section {
+						ForEach(items.trackedItems) { habitItem in
+							ListItem(item: habitItem)
+						}
+						.onDelete(perform: removeItem)
+					}
+					
+				}
+				
+				.toolbar {
+					Button {
+						showingAddItem = true
+					} label: {
+						Image(systemName: "plus.circle")
+					}
+				}
+				.sheet(isPresented: $showingAddItem) {
+					AddView(items: items)
+				}
+			}
+		}
     }
+	
+	func removeItem(at offsets: IndexSet) {
+		items.trackedItems.remove(atOffsets: offsets)
+	}
 }
+struct DefaultView: View {
+	var body: some View {
+		Text("Add a new item to track using the plus sign above.")
+			.padding()
+	}
+}
+
+struct ListItem: View {
+	let item: Item
+	var body: some View {
+		VStack {
+			Text(item.title)
+				.font(.headline)
+			Text(item.description)
+				.font(.subheadline)
+		}
+	}
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(items: Tracker())
     }
 }
